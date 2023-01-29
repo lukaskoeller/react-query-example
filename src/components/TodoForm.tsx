@@ -15,8 +15,11 @@ export const TodoForm: FC = () => {
         },
       })
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKey.Todos] })
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: [QueryKey.Todos] });
+      // queryClient.setQueryData([QueryKey.Todos], (oldData) => oldData
+      //   ? [...oldData, data] : oldData);
+      // We cannot do this because the `id` is not part of the body.
     }
   });
 
