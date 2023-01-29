@@ -1,0 +1,46 @@
+.App {
+  display: grid;
+  grid: "header header" auto
+        "aside main" 1fr
+        / 1fr 2fr;
+  gap: var(--size-4);
+  padding: var(--size-3);
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: aside;
+}
+
+form {
+  display: grid;
+  gap: var(--size-3);
+}
+
+.input-wrapper {
+  display: grid;
+  column-gap: var(--gap);
+
+  & > * {
+    min-inline-size: 0;
+  }
+
+  &:has(:is(
+    input[type="radio"],
+    input[type="checkbox"]
+  )) {
+    align-items: center;
+    justify-self: start;
+
+    & label {
+      grid-column: 2;
+    }
+  }
+}
